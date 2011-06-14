@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @root.name %>
+</p>
+
+<p>
+  <b>Problem:</b>
+  <%= @root.problem %>
+</p>
+
+<p>
+  <b>Vision:</b>
+  <%= @root.vision %>
+</p>
+
+<p>
+  <b>Scope:</b>
+  <%= @root.scope %>
+</p>
+
+<p>
+  <b>Visibility:</b>
+  <%= @root.visibility %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @root.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_root_path(@root) %> |
+<%= link_to 'Back', roots_path %>

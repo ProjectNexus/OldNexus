@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @seed.name %>
+</p>
+
+<p>
+  <b>Problem:</b>
+  <%= @seed.problem %>
+</p>
+
+<p>
+  <b>Vision:</b>
+  <%= @seed.vision %>
+</p>
+
+<p>
+  <b>Scope:</b>
+  <%= @seed.scope %>
+</p>
+
+<p>
+  <b>Visibility:</b>
+  <%= @seed.visibility %>
+</p>
+
+
+<%= link_to 'Edit', edit_seed_path(@seed) %> |
+<%= link_to 'Back', seeds_path %>

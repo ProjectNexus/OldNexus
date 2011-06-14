@@ -1,7 +1,13 @@
 Nexus::Application.routes.draw do
+  resources :roots
+
+  resources :goals
+
+  resources :seeds
+
   root :to => "pages#home"
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

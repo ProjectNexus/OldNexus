@@ -1,0 +1,33 @@
+<h1>Listing roots</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Problem</th>
+    <th>Vision</th>
+    <th>Scope</th>
+    <th>Visibility</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @roots.each do |root| %>
+  <tr>
+    <td><%= root.name %></td>
+    <td><%= root.problem %></td>
+    <td><%= root.vision %></td>
+    <td><%= root.scope %></td>
+    <td><%= root.visibility %></td>
+    <td><%= root.status %></td>
+    <td><%= link_to 'Show', root %></td>
+    <td><%= link_to 'Edit', edit_root_path(root) %></td>
+    <td><%= link_to 'Destroy', root, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Root', new_root_path %>

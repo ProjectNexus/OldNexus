@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  problem: MyText
+  vision: MyText
+  scope: MyText
+  visibility: 1
+
+two:
+  name: MyString
+  problem: MyText
+  vision: MyText
+  scope: MyText
+  visibility: 1

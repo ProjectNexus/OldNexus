@@ -1,0 +1,31 @@
+<h1>Listing seeds</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Problem</th>
+    <th>Vision</th>
+    <th>Scope</th>
+    <th>Visibility</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @seeds.each do |seed| %>
+  <tr>
+    <td><%= seed.name %></td>
+    <td><%= seed.problem %></td>
+    <td><%= seed.vision %></td>
+    <td><%= seed.scope %></td>
+    <td><%= seed.visibility %></td>
+    <td><%= link_to 'Show', seed %></td>
+    <td><%= link_to 'Edit', edit_seed_path(seed) %></td>
+    <td><%= link_to 'Destroy', seed, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Seed', new_seed_path %>

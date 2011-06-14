@@ -10,7 +10,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110610173924) do
+ActiveRecord::Schema.define(:version => 20110614191756) do
+
+  create_table "goals", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "timeline"
+    t.integer  "goalable_id"
+    t.string   "golable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roots", :force => true do |t|
+    t.string   "name"
+    t.text     "problem"
+    t.text     "vision"
+    t.text     "scope"
+    t.integer  "visibility"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "seeds", :force => true do |t|
+    t.string   "name"
+    t.text     "problem"
+    t.text     "vision"
+    t.text     "scope"
+    t.integer  "visibility"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "status"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
