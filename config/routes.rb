@@ -1,4 +1,8 @@
 Nexus::Application.routes.draw do
+  resources :resource_stocks
+
+  resources :resources
+
   resources :assignments
 
   resources :roots do

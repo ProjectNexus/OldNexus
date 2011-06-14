@@ -24,6 +24,18 @@
 </ul>
 <% end %>
 <%= link_to 'Add Assignment', new_assignment_path(:goal_id => @goal.id) %>
+<p>Resources</p>
+<% if !@goal.resource_stocks.empty? %>
+<ul>
+  <% @goal.resource_stocks.each do |stock| %>
+    <li><%= stock.demand%> - <%= stock.resource.name %> - <%= stock.quantity %></li>
+  <% end %>
+</ul>
+<% end %>
+<%= link_to 'Add Resource', new_resource_stock_path(:goal_id => @goal.id) %>
+
+
+
 
 <p>This goal belongs to <%= link_to @goalable.name, @goalable %>.</p>
 

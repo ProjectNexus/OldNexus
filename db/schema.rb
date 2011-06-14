@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110614202817) do
+ActiveRecord::Schema.define(:version => 20110614205419) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -26,6 +26,24 @@ ActiveRecord::Schema.define(:version => 20110614202817) do
     t.text     "timeline"
     t.integer  "goalable_id"
     t.string   "goalable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resource_stocks", :force => true do |t|
+    t.integer  "resource_id"
+    t.integer  "resourceable_id"
+    t.string   "resourceable_type"
+    t.string   "quantity"
+    t.string   "demand"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resources", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

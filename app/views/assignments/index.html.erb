@@ -12,8 +12,8 @@
 
 <% @assignments.each do |assignment| %>
   <tr>
-    <td><%= assignment.user_id %></td>
-    <td><%= assignment.goal_id %></td>
+    <td><%= assignment.user.email %></td>
+    <td><%= link_to assignment.goal.name, [assignment.goal.goalable,assignment.goal] %></td>
     <td><%= assignment.task %></td>
     <td><%= link_to 'Show', assignment %></td>
     <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>

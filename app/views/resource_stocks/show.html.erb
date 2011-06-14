@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Resource:</b>
+  <%= @resource_stock.resource_id %>
+</p>
+
+<p>
+  <b>Resourceable:</b>
+  <%= @resource_stock.resourceable_id %>
+</p>
+
+<p>
+  <b>Resourceable type:</b>
+  <%= @resource_stock.resourceable_type %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @resource_stock.quantity %>
+</p>
+
+<p>
+  <b>Demand:</b>
+  <%= @resource_stock.demand %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @resource_stock.note %>
+</p>
+
+
+<%= link_to 'Edit', edit_resource_stock_path(@resource_stock) %> |
+<%= link_to 'Back', resource_stocks_path %>

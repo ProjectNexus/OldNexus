@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  resource_id: 1
+  resourceable_id: 1
+  resourceable_type: MyString
+  quantity: MyString
+  demand: MyString
+  note: MyText
+
+two:
+  resource_id: 1
+  resourceable_id: 1
+  resourceable_type: MyString
+  quantity: MyString
+  demand: MyString
+  note: MyText
