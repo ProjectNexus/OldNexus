@@ -1,9 +1,13 @@
 Nexus::Application.routes.draw do
-  resources :roots
+  resources :roots do
+    resources :goals
+  end
 
   resources :goals
 
-  resources :seeds
+  resources :seeds do
+    resources :goals
+  end
 
   root :to => "pages#home"
 

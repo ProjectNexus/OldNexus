@@ -14,6 +14,7 @@ class GoalsController < ApplicationController
   # GET /goals/1.xml
   def show
     @goal = Goal.find(params[:id])
+    @goalable = find_goalable
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +26,7 @@ class GoalsController < ApplicationController
   # GET /goals/new.xml
   def new
     @goal = Goal.new
+    @goalable = find_goalable
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +42,8 @@ class GoalsController < ApplicationController
   # POST /goals
   # POST /goals.xml
   def create
-    @goal = Goal.new(params[:goal])
+    @goalable = find_goalable
+    @goal = @goalable.goals.build(params[:goal])
 
     respond_to do |format|
       if @goal.save

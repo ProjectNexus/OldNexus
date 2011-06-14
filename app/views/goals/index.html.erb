@@ -5,8 +5,7 @@
     <th>Name</th>
     <th>Description</th>
     <th>Timeline</th>
-    <th>Goalable</th>
-    <th>Golable type</th>
+    <th>Parent</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,9 +16,8 @@
     <td><%= goal.name %></td>
     <td><%= goal.description %></td>
     <td><%= goal.timeline %></td>
-    <td><%= goal.goalable_id %></td>
-    <td><%= goal.golable_type %></td>
-    <td><%= link_to 'Show', goal %></td>
+    <td><%= link_to goal.goalable.name, goal.goalable %> (<%= goal.goalable_type %>) </td>
+    <td><%= link_to 'Show', [goal.goalable,goal] %></td>
     <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
     <td><%= link_to 'Destroy', goal, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

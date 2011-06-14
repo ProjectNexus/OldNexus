@@ -10,14 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110614191756) do
+ActiveRecord::Schema.define(:version => 20110614201239) do
 
   create_table "goals", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.text     "timeline"
     t.integer  "goalable_id"
-    t.string   "golable_type"
+    t.string   "goalable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20110614191756) do
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "seeds", :force => true do |t|
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20110614191756) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "status"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

@@ -1,4 +1,6 @@
 class SeedsController < ApplicationController
+  before_filter :authenticate_user!, :only => [:new, :create, :update, :edit, :destroy]
+  
   # GET /seeds
   # GET /seeds.xml
   def index
@@ -41,6 +43,8 @@ class SeedsController < ApplicationController
   # POST /seeds.xml
   def create
     @seed = Seed.new(params[:seed])
+
+    @seed.user_id = current_user.id
 
     respond_to do |format|
       if @seed.save

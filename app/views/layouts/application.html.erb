@@ -10,8 +10,12 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
+<%= link_to "Seeds", seeds_path %> |
+<%= link_to "Roots", roots_path  %> |
+<%= link_to "Goals", goals_path  %> |
+
 <% if user_signed_in? %>
-Signed in as <%= current_user.email %>. Not you?
+Signed in as <%= current_user.email %>.
 <%= link_to "Sign out", destroy_user_session_path %>
 <% else %>
 <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>

@@ -20,11 +20,25 @@
   <%= @seed.scope %>
 </p>
 
-<p>
-  <b>Visibility:</b>
-  <%= @seed.visibility %>
-</p>
+<p><b>User</b>: <%= @seed.user.email %></p>
+
+<p>Goals:
+<% if !@seed.goals.empty? %>
+<ul>
+<%  @seed.goals.each do |goal|  %>
+  <li><b><%= link_to goal.name, [@seed,goal] %></b><br/>
+    <b>Description: </b><%= goal.description %><br/>
+    <b>Timeline: </b><%= goal.timeline %></li>
+<% end %>
+</ul>
+<%  end %>
+
+<%= link_to 'Add Goal', new_seed_goal_path(@seed) %></p>
+
+
+
 
 
 <%= link_to 'Edit', edit_seed_path(@seed) %> |
 <%= link_to 'Back', seeds_path %>
+

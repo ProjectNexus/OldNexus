@@ -15,15 +15,7 @@
   <%= @goal.timeline %>
 </p>
 
-<p>
-  <b>Goalable:</b>
-  <%= @goal.goalable_id %>
-</p>
-
-<p>
-  <b>Golable type:</b>
-  <%= @goal.golable_type %>
-</p>
+<p>This goal belongs to <%= link_to @goalable.name, @goalable %>.</p>
 
 
 <%= link_to 'Edit', edit_goal_path(@goal) %> |
