@@ -28,7 +28,16 @@
 <%  @seed.goals.each do |goal|  %>
   <li><b><%= link_to goal.name, [@seed,goal] %></b><br/>
     <b>Description: </b><%= goal.description %><br/>
-    <b>Timeline: </b><%= goal.timeline %></li>
+    <b>Timeline: </b><%= goal.timeline %>
+    <% if !goal.assignments.empty? %>
+    <br/><b>Assigned to:
+      <% goal.assignments.each do |assignment| %>
+        <%= link_to assignment.user.email, assignment %>
+      <% end %></b>
+    <% end %>
+  
+  </li>
+
 <% end %>
 </ul>
 <%  end %>

@@ -1,4 +1,6 @@
 Nexus::Application.routes.draw do
+  resources :assignments
+
   resources :roots do
     resources :goals
   end

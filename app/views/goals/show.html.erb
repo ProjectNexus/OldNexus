@@ -15,6 +15,16 @@
   <%= @goal.timeline %>
 </p>
 
+<p>Assignments:</p>
+<% if !@goal.assignments.empty? %>
+<ul>
+  <% @goal.assignments.each do |assignment| %>
+  <li><%= assignment.user.email %> - <%= assignment.task %></li>
+  <% end %>
+</ul>
+<% end %>
+<%= link_to 'Add Assignment', new_assignment_path(:goal_id => @goal.id) %>
+
 <p>This goal belongs to <%= link_to @goalable.name, @goalable %>.</p>
 
 
