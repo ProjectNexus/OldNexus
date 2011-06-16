@@ -44,7 +44,7 @@
 
 <%= link_to 'Add Goal', new_seed_goal_path(@seed) %></p>
 
-<p><b>Category</b>: <%= @seed.category.name %></p>
+<p><b>Category</b>: <%= link_to @seed.category.name,@seed.category %></p>
 
 
 

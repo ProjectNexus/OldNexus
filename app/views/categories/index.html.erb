@@ -11,8 +11,8 @@
 
 <% @categories.each do |category| %>
   <tr>
-    <td><%= category.name %></td>
-    <td><%= if !category.root? then category.parent.name end %></td>
+    <td><%= link_to category.name,category %></td>
+    <td><%= if !category.root? then link_to category.parent.name,category.parent end %></td>
     <td><%= link_to 'Show', category %></td>
     <td><%= link_to 'Edit', edit_category_path(category) %></td>
     <td><%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %></td>
