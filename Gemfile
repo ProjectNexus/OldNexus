@@ -11,6 +11,8 @@ gem 'devise'
 
 gem 'rake', "!= 0.9.0"
 
+gem "nested_set"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

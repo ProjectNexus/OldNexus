@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @category.name %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%= if !@category.root? then link_to @category.parent.name,@category.parent else "Root Category" end %>
+</p>
+
+<% if @category.children.exists? then %>
+<p><b>Children</b>:</p>
+<ul>
+<% @category.children.each do |child| %>
+  <li><%= link_to child.name,child %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<p><b>Seeds (including descendants)</b></p>
+<ul>
+  <% @category.self_and_descendants.each do |desc| %>
+  <% if desc.seeds.exists? then desc.seeds.each do |seed| %>
+  <li><%= link_to seed.name,seed %></li>
+  <% end end end %>
+</ul>
+
+<% if @category.seeds.exists? then %>
+<p><b>Seeds (only self)</b></p>
+<ul>
+  <% @category.seeds.each do |seed| %>
+  <li><%= link_to seed.name,seed %></li>
+  <% end %>
+</ul>
+<% end %>
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

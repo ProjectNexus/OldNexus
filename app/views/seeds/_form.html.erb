@@ -4,9 +4,9 @@
       <h2><%= pluralize(@seed.errors.count, "error") %> prohibited this seed from being saved:</h2>
 
       <ul>
-      <% @seed.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @seed.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -30,6 +30,10 @@
   <div class="field">
     <%= f.label :visibility %><br />
     <%= f.text_field :visibility %>
+  </div>
+  <div class="field">
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, @categories, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

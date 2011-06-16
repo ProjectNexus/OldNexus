@@ -27,6 +27,7 @@ class SeedsController < ApplicationController
   # GET /seeds/new.xml
   def new
     @seed = Seed.new
+    @categories = Category.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,6 +38,7 @@ class SeedsController < ApplicationController
   # GET /seeds/1/edit
   def edit
     @seed = Seed.find(params[:id])
+    @categories = Category.all
   end
 
   # POST /seeds
