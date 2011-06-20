@@ -20,7 +20,7 @@
   <%= @seed.scope %>
 </p>
 
-<p><b>Creator</b>: <%= @seed.user.email %></p>
+<p><b>Creator</b>: <%= @seed.user.profile.name %></p>
 
 <p>Goals:
   <% if !@seed.goals.empty? %>
@@ -32,7 +32,7 @@
         <% if !goal.assignments.empty? %>
           <br/><b>Assigned to:
             <% goal.assignments.each do |assignment| %>
-              <%= link_to assignment.user.email, assignment %>
+              <%= link_to assignment.user.profile.name, assignment.user.profile %>
             <% end %></b>
         <% end %>
 
@@ -51,7 +51,7 @@
     <% @seed.tag_links.each do |tag_link| %>
       <%= tag_link.tag.name %>,
     <% end end %>
-      <%= link_to "Add", new_tag_path(@seed) %>
+      <%= link_to "Add", new_tag_link_path(:tag_link => {:taggable_id => @seed.id,:taggable_type => "Seed"}) %>
 </p>
 
 

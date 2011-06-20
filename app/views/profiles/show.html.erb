@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Email:</b>
+  <%= @profile.user.email %>
+</p>
+
+<p>
   <b>Name:</b>
   <%= @profile.name %>
 </p>
@@ -8,6 +13,14 @@
 <p>
   <b>Location:</b>
   <%= @profile.location %>
+</p>
+
+<p><b>Tags</b>:
+  <% if !@profile.tag_links.empty? %>
+    <% @profile.tag_links.each do |tag_link| %>
+      <%= tag_link.tag.name %>,
+    <% end end %>
+      <%= link_to "Add", new_tag_link_path(:tag_link => {:taggable_id => @profile.id,:taggable_type => "Profile"}) %>
 </p>
 
 

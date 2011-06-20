@@ -24,7 +24,7 @@ class TagLinksController < ApplicationController
   # GET /tag_links/new
   # GET /tag_links/new.xml
   def new
-    @tag_link = TagLink.new
+    @tag_link = TagLink.new(params[:tag_link])
 
     respond_to do |format|
       format.html # new.html.erb
