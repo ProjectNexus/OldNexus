@@ -9,7 +9,7 @@
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-
+<%= link_to "Profiles", profiles_path %> |
 <%= link_to "Seeds", seeds_path %> |
 <%= link_to "Roots", roots_path  %> |
 <%= link_to "Goals", goals_path  %> |
@@ -21,7 +21,7 @@
 <%= link_to "Tag Links", tag_links_path %> |
 
 <% if user_signed_in? %>
-Signed in as <%= current_user.email %>.
+Signed in as <%= current_user.email %>. <%= if !current_user.profile.blank? then link_to "Edit Profile", edit_profile_path(current_user.profile) end%> |
 <%= link_to "Sign out", destroy_user_session_path %>
 <% else %>
 <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>

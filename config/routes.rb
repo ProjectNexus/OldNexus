@@ -1,4 +1,6 @@
 Nexus::Application.routes.draw do
+  resources :profiles
+
   resources :tag_links
 
   resources :tags

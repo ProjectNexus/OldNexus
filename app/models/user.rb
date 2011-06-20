@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   has_many :roots
   has_many :assignments
 
+  has_one :profile
+
   # Setup accessible (or protected) attributes for your model
+  attr_accessible :profile_attributes
+  accepts_nested_attributes_for :profile
   attr_accessible :email, :password, :password_confirmation, :remember_me
 end
