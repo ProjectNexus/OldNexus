@@ -1,0 +1,27 @@
+<h1>Listing tag_links</h1>
+
+<table>
+  <tr>
+    <th>Taggable</th>
+    <th>Tag</th>
+    <th>Type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tag_links.each do |tag_link| %>
+  <tr>
+    <td><%= link_to tag_link.taggable.name, tag_link.taggable %> (<%= tag_link.taggable_type %>)</td>
+    <td><%= link_to tag_link.tag.name, tag_link.tag %></td>
+    <td><%= tag_link.tag_type %></td>
+    <td><%= link_to 'Show', tag_link %></td>
+    <td><%= link_to 'Edit', edit_tag_link_path(tag_link) %></td>
+    <td><%= link_to 'Destroy', tag_link, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tag link', new_tag_link_path %>

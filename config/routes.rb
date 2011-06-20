@@ -1,4 +1,8 @@
 Nexus::Application.routes.draw do
+  resources :tag_links
+
+  resources :tags
+
   resources :categories
 
   resources :resource_stocks

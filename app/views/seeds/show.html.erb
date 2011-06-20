@@ -23,33 +23,42 @@
 <p><b>Creator</b>: <%= @seed.user.email %></p>
 
 <p>Goals:
-<% if !@seed.goals.empty? %>
-<ul>
-<%  @seed.goals.each do |goal|  %>
-  <li><b><%= link_to goal.name, [@seed,goal] %></b><br/>
-    <b>Description: </b><%= goal.description %><br/>
-    <b>Timeline: </b><%= goal.timeline %>
-    <% if !goal.assignments.empty? %>
-    <br/><b>Assigned to:
-      <% goal.assignments.each do |assignment| %>
-        <%= link_to assignment.user.email, assignment %>
-      <% end %></b>
-    <% end %>
-  
-  </li>
+  <% if !@seed.goals.empty? %>
+  <ul>
+    <%  @seed.goals.each do |goal|  %>
+      <li><b><%= link_to goal.name, [@seed,goal] %></b><br/>
+        <b>Description: </b><%= goal.description %><br/>
+        <b>Timeline: </b><%= goal.timeline %>
+        <% if !goal.assignments.empty? %>
+          <br/><b>Assigned to:
+            <% goal.assignments.each do |assignment| %>
+              <%= link_to assignment.user.email, assignment %>
+            <% end %></b>
+        <% end %>
 
-<% end %>
-</ul>
+      </li>
+
+    <% end %>
+  </ul>
 <%  end %>
 
 <%= link_to 'Add Goal', new_seed_goal_path(@seed) %></p>
 
 <p><b>Category</b>: <%= link_to @seed.category.name,@seed.category %></p>
 
+<p><b>Tags</b>:
+  <% if !@seed.tag_links.empty? %>
+    <% @seed.tag_links.each do |tag_link| %>
+      <%= tag_link.tag.name %>,
+    <% end end %>
+      <%= link_to "Add", new_tag_path(@seed) %>
+</p>
 
 
 
 
-<%= link_to 'Edit', edit_seed_path(@seed) %> |
-<%= link_to 'Back', seeds_path %>
+
+
+  <%= link_to 'Edit', edit_seed_path(@seed) %> |
+  <%= link_to 'Back', seeds_path %>
 

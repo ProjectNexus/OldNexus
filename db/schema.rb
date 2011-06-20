@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110616213652) do
+ActiveRecord::Schema.define(:version => 20110620194504) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -80,6 +80,21 @@ ActiveRecord::Schema.define(:version => 20110616213652) do
     t.integer  "status"
     t.integer  "user_id"
     t.integer  "category_id"
+  end
+
+  create_table "tag_links", :force => true do |t|
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tag_id"
+    t.string   "tag_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
