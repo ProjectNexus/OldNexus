@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Name:</b>
   <%= @seed.name %>
@@ -51,7 +49,7 @@
     <% @seed.tag_links.each do |tag_link| %>
       <%= tag_link.tag.name %>,
     <% end end %>
-      <%= link_to "Add", new_tag_link_path(:tag_link => {:taggable_id => @seed.id,:taggable_type => "Seed"}) %>
+      <%= link_to "Add", new_tag_path(:tag_link => {:taggable_id => @seed.id,:taggable_type => "Seed",:tag_type => "tag"}) %>
 </p>
 
 

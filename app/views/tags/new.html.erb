@@ -1,5 +1,26 @@
-<h1>New tag</h1>
+<%= form_for @tag do |f| %>
 
-<%= render 'form' %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
 
-<%= link_to 'Back', tags_path %>
+
+  <%= fields_for @tag_link do |tag_field| %>
+    <div class="field">
+      <%= tag_field.label :taggable_id %><br />
+      <%= tag_field.text_field :taggable_id %>
+    </div>
+    <div class="field">
+      <%= tag_field.label :taggable_type %><br />
+      <%= tag_field.text_field :taggable_type %>
+    </div>
+    <div class="field">
+      <%= tag_field.label :tag_type %><br />
+      <%= tag_field.text_field :tag_type %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
