@@ -1,9 +1,15 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @tag.name %></h1>
 
-<p>
-  <b>Name:</b>
-  <%= @tag.name %>
-</p>
+<% if !@tag.tag_links.empty? %>
+  <p>Tagged Items:</p>
+  <ul>
+    <% @tag.tag_links.each do |tag_link| %>
+      <li><%= link_to tag_link.taggable.name,polymorphic_path([tag_link.taggable])%> (<%= tag_link.taggable_type %>)</li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Nothing is tagged with <%= @tag.name %>!</p>
+<% end %>
 
 
 <%= link_to 'Edit', edit_tag_path(@tag) %> |

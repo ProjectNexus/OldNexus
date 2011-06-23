@@ -20,7 +20,7 @@
     <% @profile.tag_links.each do |tag_link| %>
       <%= tag_link.tag.name %>,
     <% end end %>
-      <%= link_to "Add", new_tag_link_path(:tag_link => {:taggable_id => @profile.id,:taggable_type => "Profile"}) %>
+      <%= link_to "Add", new_tag_path(:tag_link => {:taggable_id => @profile.id,:taggable_type => "Profile"}) %>
 </p>
 
 
