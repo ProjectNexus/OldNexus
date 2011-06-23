@@ -1,4 +1,26 @@
-<p id="notice"><%= notice %></p>
+<style type="text/css">
+  form
+  {
+    display:inline;
+  }
+</style>
+<script type="text/javascript">
+  jQuery(function($){
+    $('#add_tag_link').click(function(){
+      $('#add_tag').load('<%= new_tag_path(:tag_link => {:taggable_id => @profile.id,:taggable_type => "Profile",:tag_type => "tag"}) %>', function(){
+        $('#add_tag_link').hide();
+        $('#tag_name').focus();
+        $('#new_tag').bind('ajax:success', function(evt, data, status, xhr) {
+          $('#add_tag').html("");
+          /*$('#add_tag').html(data.msg);*/
+          console.log(data.msg);
+          $('#add_tag_link').before(data.tag + ", ");
+          $('#add_tag_link').show();
+        });
+      });
+    });
+  });
+</script>
 
 <p>
   <b>Email:</b>
@@ -18,9 +40,10 @@
 <p><b>Tags</b>:
   <% if !@profile.tag_links.empty? %>
     <% @profile.tag_links.each do |tag_link| %>
-      <%= tag_link.tag.name %>,
+      <%= link_to tag_link.tag.name, tag_link.tag %>, 
     <% end end %>
-      <%= link_to "Add", new_tag_path(:tag_link => {:taggable_id => @profile.id,:taggable_type => "Profile"}) %>
+      <button id="add_tag_link">Add Tag</button>
+  <span id="add_tag"></span>
 </p>
 
 

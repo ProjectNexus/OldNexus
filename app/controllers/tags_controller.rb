@@ -44,18 +44,18 @@ class TagsController < ApplicationController
       @tag = Tag.new(params[:tag])
       @tag_link = @tag.tag_links.build(params[:tag_link])
       @tag.save
-      render :json => {:msg => "Created and added #{@tag.name} to list of tags",:tag=>@tag.name}.to_json
+      render :json => {:msg => "Created and added #{@tag.name} to list of tags",:tag=>@tag.name}
       #redirect_to(polymorphic_path(@tag_link.taggable),:notice=>"Created and added #{@tag.name} to list of tags.")
     else
       @link_find = TagLink.find(:first, :conditions => {:tag_id => @find.id, :taggable_type => params[:tag_link][:taggable_type],:taggable_id => params[:tag_link][:taggable_id]})
       if @link_find.nil?
         @tag_link = @find.tag_links.build(params[:tag_link])
         @find.save
-        render :json => {:msg=>"Added #{@find.name} to list of tags",:tag=>@find.name}.to_json
+        render :json => {:msg=>"Added #{@find.name} to list of tags",:tag=>@find.name}
 
         #redirect_to(@tag_link.taggable,:notice => "Added #{@find.name} to list of tags.")
       else
-        render :json => {:msg=>"This object is already tagged with #{@find.name}",:tag=>@find.name}.to_json
+        render :json => {:msg=>"This object is already tagged with #{@find.name}",:tag=>@find.name}
         #redirect_to(polymorphic_path(@link_find.taggable),:notice => "This object is already tagged with #{@find.name}!")
       end
     end

@@ -3,12 +3,7 @@
   {
     display:inline;
   }
-  span
-  {
-    display:inline;
-}
 </style>
-
 <script type="text/javascript">
   jQuery(function($){
     $('#add_tag_link').click(function(){
@@ -76,7 +71,7 @@
 <p><b>Tags</b>:
   <% if !@seed.tag_links.empty? %>
     <% @seed.tag_links.each do |tag_link| %>
-      <%= tag_link.tag.name %>,
+      <%= link_to tag_link.tag.name, tag_link.tag %>,
     <% end end %>
   <button id="add_tag_link">Add Tag</button>
   <span id="add_tag"></span>
