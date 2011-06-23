@@ -1,3 +1,32 @@
+<style type="text/css">
+  form
+  {
+    display:inline;
+  }
+  span
+  {
+    display:inline;
+}
+</style>
+
+<script type="text/javascript">
+  jQuery(function($){
+    $('#add_tag_link').click(function(){
+      $('#add_tag').load('<%= new_tag_path(:tag_link => {:taggable_id => @seed.id,:taggable_type => "Seed",:tag_type => "tag"}) %>', function(){
+        $('#add_tag_link').hide();
+        $('#tag_name').focus();
+        $('#new_tag').bind('ajax:success', function(evt, data, status, xhr) {
+          $('#add_tag').html("");
+          /*$('#add_tag').html(data.msg);*/
+          console.log(data.msg);
+          $('#add_tag_link').before(data.tag + ", ");
+          $('#add_tag_link').show();
+        });
+      });
+    });
+  });
+</script>
+
 <p>
   <b>Name:</b>
   <%= @seed.name %>
@@ -49,14 +78,10 @@
     <% @seed.tag_links.each do |tag_link| %>
       <%= tag_link.tag.name %>,
     <% end end %>
-      <%= link_to "Add", new_tag_path(:tag_link => {:taggable_id => @seed.id,:taggable_type => "Seed",:tag_type => "tag"}) %>
+  <button id="add_tag_link">Add Tag</button>
+  <span id="add_tag"></span>
 </p>
 
-
-
-
-
-
-  <%= link_to 'Edit', edit_seed_path(@seed) %> |
-  <%= link_to 'Back', seeds_path %>
+<%= link_to 'Edit', edit_seed_path(@seed) %> |
+<%= link_to 'Back', seeds_path %>
 

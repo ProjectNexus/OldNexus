@@ -1,26 +1,10 @@
-<%= form_for @tag do |f| %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-
+<%= form_for @tag, :'data-type' => 'json', :remote => true do |f| %>
+    <%= f.text_field :name %> <%= f.submit %>
 
   <%= fields_for @tag_link do |tag_field| %>
-    <div class="field">
-      <%= tag_field.label :taggable_id %><br />
-      <%= tag_field.text_field :taggable_id %>
-    </div>
-    <div class="field">
-      <%= tag_field.label :taggable_type %><br />
-      <%= tag_field.text_field :taggable_type %>
-    </div>
-    <div class="field">
-      <%= tag_field.label :tag_type %><br />
-      <%= tag_field.text_field :tag_type %>
-    </div>
+    <%= tag_field.text_field :taggable_id, :hidden => true %>
+    <%= tag_field.text_field :taggable_type, :hidden => true %>
+    <%= tag_field.text_field :tag_type, :hidden => true %>
   <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>
