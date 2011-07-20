@@ -7,8 +7,10 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <div id="main">
+    <div id="header">
+      <div id="logo"><a href="/"><img src="/images/logo.png"></a></div>
+      <div id="nav">
 <%= link_to "Profiles", profiles_path %> |
 <%= link_to "Seeds", seeds_path %> |
 <%= link_to "Roots", roots_path  %> |
@@ -18,7 +20,8 @@
 <%= link_to "Resource Stocks", resource_stocks_path %> |
 <%= link_to "Categories", categories_path %> |
 <%= link_to "Tags", tags_path %> |
-<%= link_to "Tag Links", tag_links_path %> |
+<%= link_to "Tag Links", tag_links_path %><br />
+
 
 <% if user_signed_in? %>
 Signed in as <%= current_user.email %>. <%= if !current_user.profile.blank? then link_to "Edit Profile", edit_profile_path(current_user.profile) end%> |
@@ -26,8 +29,14 @@ Signed in as <%= current_user.email %>. <%= if !current_user.profile.blank? then
 <% else %>
 <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
 <% end %>
+</div>
+      <div>
+<hr />
 
 <%= yield %>
 
+
+  </div>
+    
 </body>
 </html>

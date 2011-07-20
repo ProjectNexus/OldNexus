@@ -22,61 +22,70 @@
   });
 </script>
 
-<p>
-  <b>Name:</b>
-  <%= @seed.name %>
-</p>
+<h1><%= @seed.name %></h1>
+<hr />
 
-<p>
-  <b>Problem:</b>
-  <%= @seed.problem %>
-</p>
 
-<p>
-  <b>Vision:</b>
-  <%= @seed.vision %>
-</p>
+<div id="basics">
+  <div class="section-label">basics</div>
+  <div class="items">
+    <div class="basic-item">
+      <div class="basic-heading">Problem</div>
+      <div class="basic-content"><%= @seed.problem %></div>
+      <div style="clear:both"></div>
+    </div>
+    <div class="basic-item">
+      <div class="basic-heading">Vision</div>
+      <div class="basic-content"><%= @seed.vision %></div>
+      <div style="clear:both"></div>
+    </div>
+    <div class="basic-item">
+      <div class="basic-heading">Scope</div>
+      <div class="basic-content"><%= @seed.scope %></div>
+      <div style="clear:both"></div>
+    </div>
+  </div>
+</div>
+<hr />
+<% if !@seed.goals.empty? %>
 
-<p>
-  <b>Scope:</b>
-  <%= @seed.scope %>
-</p>
-
-<p><b>Creator</b>: <%= @seed.user.profile.name %></p>
-
-<p>Goals:
-  <% if !@seed.goals.empty? %>
-  <ul>
+  <div id="goals">
+    <div class="section-label">goals</div>
+    <div class="items">
     <%  @seed.goals.each do |goal|  %>
-      <li><b><%= link_to goal.name, [@seed,goal] %></b><br/>
-        <b>Description: </b><%= goal.description %><br/>
-        <b>Timeline: </b><%= goal.timeline %>
+      <div class="goal-item">
+        <div class="goal-name"><%= link_to goal.name, [@seed,goal] %></div>
+        <div class="goal-desc"><%= goal.description %></div>
+        <div class="goal-attr"><b>Timeline:</b> <%= goal.timeline %></div>
         <% if !goal.assignments.empty? %>
-          <br/><b>Assigned to:
-            <% goal.assignments.each do |assignment| %>
-              <%= link_to assignment.user.profile.name, assignment.user.profile %>
-            <% end %></b>
+          <div class="goal-attr">
+            <b>Assigned to:</b>
+              <% goal.assignments.each do |assignment| %>
+                <%= link_to assignment.user.profile.name, assignment.user.profile %>
+              <% end %>
+          </div>
         <% end %>
-
-      </li>
-
+      </div>
     <% end %>
-  </ul>
+    </div>
+  </div>
 <%  end %>
+<hr />
+<h3>Category: <%= link_to @seed.category.name,@seed.category %></h3>
 
-<%= link_to 'Add Goal', new_seed_goal_path(@seed) %></p>
-
-<p><b>Category</b>: <%= link_to @seed.category.name,@seed.category %></p>
-
-<p><b>Tags</b>:
+<h3>Tags:
   <% if !@seed.tag_links.empty? %>
     <% @seed.tag_links.each do |tag_link| %>
       <%= link_to tag_link.tag.name, tag_link.tag %>,
     <% end end %>
   <button id="add_tag_link">Add Tag</button>
   <span id="add_tag"></span>
-</p>
-
+</h3>
+<hr />
+<h2>Created by: <%= link_to @seed.user.profile.name,@seed.user.profile %></h2>
+<hr />
+<p>
 <%= link_to 'Edit', edit_seed_path(@seed) %> |
 <%= link_to 'Back', seeds_path %>
+</p>
 

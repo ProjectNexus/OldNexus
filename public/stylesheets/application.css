@@ -1,0 +1,147 @@
+body{
+  color: #666666;
+  margin:0px;
+  font-family: "Helvetica World",serif;
+  font-size: 14px;
+  line-height:15px;
+  }
+a
+{ 
+  color: #000; text-decoration: none;
+}
+a:visited
+{
+  color: #666;
+}
+a:hover
+{
+  text-decoration: underline;
+}
+#main
+{
+  /*background-color:#F0F0F0;*/
+  width:1000px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:20px;
+}
+#logo
+{
+  float:left;
+  margin-right:10px;
+}
+#nav
+{
+  margin-right:10px;
+  font-family: "HelveticaNeueLT Com 45 Lt",serif;
+  font-size:14px;
+  padding-top:10px;
+  text-align: right;
+  }
+hr
+{
+  width:100%;
+  clear:both;
+  border-style:none;
+  border-bottom-style:solid;
+  border-bottom-color:#DDD;
+  border-bottom-width:1px;
+  margin:0px;
+}
+h1
+{
+  font-family: "HelveticaNeueLT Com 45 Lt",serif;
+  font-weight: 200;
+  font-size:32px;
+  line-height:32px;
+  margin:10px 0px 10px 0px;
+}
+h2
+{
+  font-family: "HelveticaNeueLT Com 45 Lt",serif;
+  font-weight: 200;
+  font-size:24px;
+  line-height:24px;
+  margin:10px 0px 10px 0px;
+}
+h3
+{
+  font-family: "HelveticaNeueLT Com 45 Lt",serif;
+  font-weight: 200;
+  font-size:18px;
+  line-height:18px;
+  margin:10px 0px 10px 0px;
+}
+.section-label
+{
+  -webkit-transform:rotate(270deg);
+  font-size:30px;
+  font-family: "HelveticaNeueLT Com 47 LtCn",serif;
+  color:#e0e0e0;
+  position:absolute;
+  left:0px;
+  top:45%;
+  text-align:left;
+  margin-left:-25px;
+ }
+#basics
+{
+  position:relative;
+}
+.basic-item
+{
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-left:30px;
+}
+.basic-item:hover
+{
+  background-color:#f0f0f0;
+}
+.basic-heading
+{
+  font-family: "HelveticaNeueLT Com 45 Lt",serif;
+  width:90px;
+  text-align:right;
+  font-size:18px;
+  color:#999;
+  float:left;
+}
+.basic-content
+{
+  margin-left:10px;
+  width:860px;
+  float:left;
+}
+#goals
+{
+  position:relative;
+}
+.goal-item
+{
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-left:30px;
+}
+.goal-item:hover
+{
+  background-color:#f0f0f0;
+}
+.goal-name
+{
+  font-family: "HelveticaNeueLT Com 45 Lt",serif;
+  font-size:18px;
+  color:#999;
+  margin-left:20px;
+  margin-bottom:3px;
+}
+.goal-desc
+{
+  margin-left:70px;
+  margin-bottom:3px;
+}
+.goal-attr
+{
+  margin-left:120px;
+  margin-bottom:3px;
+}
