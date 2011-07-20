@@ -47,7 +47,7 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
-        format.html { redirect_to(@goal, :notice => 'Goal was successfully created.') }
+        format.html { redirect_to(polymorphic_path([@goalable,@goal]), :notice => 'Goal was successfully created.') }
         format.xml  { render :xml => @goal, :status => :created, :location => @goal }
       else
         format.html { render :action => "new" }
@@ -63,7 +63,7 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.update_attributes(params[:goal])
-        format.html { redirect_to(@goal, :notice => 'Goal was successfully updated.') }
+        format.html { redirect_to(polymorphic_path([@goal.goalable,@goal]), :notice => 'Goal was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

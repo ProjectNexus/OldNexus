@@ -40,5 +40,5 @@
 <p>This goal belongs to <%= link_to @goalable.name, @goalable %>.</p>
 
 
-<%= link_to 'Edit', edit_goal_path(@goal) %> |
+<%= link_to 'Edit', edit_polymorphic_path([@goalable,@goal]) %> |
 <%= link_to 'Back', goals_path %>
