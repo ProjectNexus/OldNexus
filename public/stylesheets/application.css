@@ -15,7 +15,7 @@ a:visited
 }
 a:hover
 {
-  text-decoration: underline;
+  text-decoration: none;
 }
 #main
 {
@@ -46,7 +46,8 @@ hr
   border-bottom-style:solid;
   border-bottom-color:#DDD;
   border-bottom-width:1px;
-  margin:0px;
+  margin-top:10px;
+  margin-bottom:10px;
 }
 h1
 {
@@ -80,6 +81,7 @@ h3
   top:45%;
   text-align:left;
   margin-left:-25px;
+  overflow:hidden;
  }
 #basics
 {
@@ -119,6 +121,7 @@ h3
   margin-top:10px;
   margin-bottom:10px;
   margin-left:30px;
+  position:relative;
 }
 .goal-item:hover
 {
@@ -128,6 +131,7 @@ h3
 {
   font-weight: 300;
   font-size:18px;
+  line-height:18px;
   color:#999;
   margin-left:20px;
   margin-bottom:3px;
@@ -141,4 +145,55 @@ h3
 {
   margin-left:120px;
   margin-bottom:3px;
+}
+.admin-box
+{
+  position:absolute;
+  right:0px;
+  top:0px;
+  height:16px;
+}
+.admin-box a
+{
+  line-height:16px;
+  padding-left:6px;
+  padding-right:6px;
+  text-decoration:none;
+  margin-right:5px;
+}
+.edit
+{
+  background-color:#6f6;
+  border:1px #0b0 solid;
+}
+.edit:hover
+{
+  background-color:#0b0;
+}
+.destroy
+{
+  background-color:#f66;
+  border:1px #b00 solid;
+}
+.destroy:hover
+{
+  background-color:#b00;
+}
+#basics .edit
+{
+  margin-top:-20px;
+}
+.index-item
+{
+  position:relative;
+}
+.index-item h3
+{
+  margin-bottom:0px;
+}
+.index-item p
+{
+  margin-top:0px;
+  margin-bottom:0px;
+  margin-left:20px;
 }

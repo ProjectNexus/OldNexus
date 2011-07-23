@@ -1,29 +1,16 @@
 <h1>Listing goals</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Timeline</th>
-    <th>Parent</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<hr />
 <% @goals.each do |goal| %>
-  <tr>
-    <td><%= goal.name %></td>
-    <td><%= goal.description %></td>
-    <td><%= goal.timeline %></td>
-    <td><%= link_to goal.goalable.name, goal.goalable %> (<%= goal.goalable_type %>) </td>
-    <td><%= link_to 'Show', [goal.goalable,goal] %></td>
-    <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-    <td><%= link_to 'Destroy', goal, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<div class="index-item">
+  <h3><%= link_to goal.name,goal %> - <%= link_to goal.goalable.name,goal.goalable %> (<%= goal.goalable_type%>) </h3>
+  <p><%= goal.description %></p>
+  <p>Timeline: <%= goal.timeline %></p>
+  <div class="admin-box">
+    <%= link_to 'Edit', edit_goal_path(goal),:class=>"edit" %>
+    <%= link_to 'X', goal, :confirm => 'Are you sure?', :method => :delete,:class=>"destroy" %>
+  </div>
+</div>
+<hr/>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Goal', new_goal_path %>
+<h3><%= link_to 'New Goal', new_goal_path %></h3>

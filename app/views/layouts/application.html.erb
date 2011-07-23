@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Nexus</title>
-  <%= stylesheet_link_tag :all %>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:300,400,600|Lato:100,300,400,700|Raleway:100&v2' rel='stylesheet' type='text/css'></link>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
-  <div id="main">
-    <div id="header">
-      <div id="logo"><a href="/"><img src="/images/logo.png"></a></div>
-      <div id="nav">
-<%= link_to "Profiles", profiles_path %> |
-<%= link_to "Seeds", seeds_path %> |
-<%= link_to "Roots", roots_path  %> |
-<%= link_to "Goals", goals_path  %> |
-<%= link_to "Assignments", assignments_path  %> |
-<%= link_to "Resources", resources_path %> |
-<%= link_to "Resource Stocks", resource_stocks_path %> |
-<%= link_to "Categories", categories_path %> |
-<%= link_to "Tags", tags_path %> |
-<%= link_to "Tag Links", tag_links_path %><br />
+  <head>
+    <title>Nexus</title>
+    <%= stylesheet_link_tag :all %>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700&v2' rel='stylesheet' type='text/css'></link>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <div id="main">
+      <div id="header">
+        <div id="logo"><a href="/"><img src="/images/logo.png"></a></div>
+        <div id="nav">
+          <%= link_to "Profiles", profiles_path %> |
+          <%= link_to "Seeds", seeds_path %> |
+          <%= link_to "Roots", roots_path  %> |
+          <%= link_to "Goals", goals_path  %> |
+          <%= link_to "Assignments", assignments_path  %> |
+          <%= link_to "Resources", resources_path %> |
+          <%= link_to "Resource Stocks", resource_stocks_path %> |
+          <%= link_to "Categories", categories_path %> |
+          <%= link_to "Tags", tags_path %> |
+          <%= link_to "Tag Links", tag_links_path %><br />
 
 
-<% if user_signed_in? %>
-Signed in as <%= current_user.email %>. <%= if !current_user.profile.blank? then link_to "Edit Profile", edit_profile_path(current_user.profile) end%> |
-<%= link_to "Sign out", destroy_user_session_path %>
-<% else %>
-<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-<% end %>
-</div>
-      <div>
-<hr />
+          <% if user_signed_in? %>
+            Signed in as <%= current_user.email %>. <%= if !current_user.profile.blank? then link_to "Edit Profile", edit_profile_path(current_user.profile) end%> |
+            <%= link_to "Sign out", destroy_user_session_path %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+          <% end %>
+        </div>
+        <div>
+          <hr />
 
-<%= yield %>
+          <%= yield %>
 
 
-  </div>
-    
-</body>
+        </div>
+      </div>
+    </div>
+
+  </body>
 </html>

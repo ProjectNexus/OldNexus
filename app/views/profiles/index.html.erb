@@ -1,27 +1,11 @@
 <h1>Listing profiles</h1>
-
-<table>
-  <tr>
-    <th>Email</th>
-    <th>Name</th>
-    <th>Location</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<hr />
 <% @profiles.each do |profile| %>
-  <tr>
-    <td><%= profile.user.email %></td>
-    <td><%= profile.name %></td>
-    <td><%= profile.location %></td>
-    <td><%= link_to 'Show', profile %></td>
-    <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-    <td><%= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<div class="index-item">
+  <h3><%= link_to profile.name, profile %></h3>
+  <p>Email: <%= profile.user.email %>, Location: <%= profile.location %></p>
+  <div class="admin-box"><%= link_to 'Edit', edit_profile_path(profile),:class=>"edit" %><%= link_to 'X', profile, :confirm => 'Are you sure?', :method => :delete,:class=>"destroy" %></div>
+</div>
+<hr/>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Profile', new_profile_path %>
+<h3><%= link_to 'New Profile', new_profile_path %></h3>

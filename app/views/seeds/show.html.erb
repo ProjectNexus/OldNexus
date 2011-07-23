@@ -19,6 +19,12 @@
         });
       });
     });
+    $('.goal-item').click(function() {
+      $(this).children('.goal-details').toggle('blind','slow');
+    }).children('.goal-details').hide();
+    $('.goal-item a').click(function(e){
+      e.stopPropagation();
+    });
   });
 </script>
 
@@ -28,6 +34,7 @@
 
 <div id="basics">
   <div class="section-label">basics</div>
+  <div class="admin-box"><%= link_to "Edit",edit_seed_path,:class=>"edit"  %> </div>
   <div class="items">
     <div class="basic-item">
       <div class="basic-heading">Problem</div>
@@ -52,22 +59,26 @@
   <div id="goals">
     <div class="section-label">goals</div>
     <div class="items">
-    <%  @seed.goals.each do |goal|  %>
-      <div class="goal-item">
-        <div class="goal-name"><%= link_to goal.name, [@seed,goal] %></div>
-        <div class="goal-desc"><%= goal.description %></div>
-        <div class="goal-attr"><b>Timeline:</b> <%= goal.timeline %></div>
-        <% if !goal.assignments.empty? %>
-          <div class="goal-attr">
-            <b>Assigned to:</b>
-              <% goal.assignments.each do |assignment| %>
-                <%= link_to assignment.user.profile.name, assignment.user.profile %>
-              <% end %>
+      <%  @seed.goals.each do |goal|  %>
+        <div class="goal-item">
+          <div class="admin-box"><%= link_to "Edit",[@seed,goal],:class=>"edit" %> </div>
+          <div class="goal-name"><%= goal.name %></div>
+          <div class="goal-desc"><%= goal.description %></div>
+          <div class="goal-details">
+            <div class="goal-attr"><b>Timeline:</b> <%= goal.timeline %></div>
+            <% if !goal.assignments.empty? %>
+              <div class="goal-attr">
+                <b>Assigned to:</b>
+                <% goal.assignments.each do |assignment| %>
+                  <%= link_to assignment.user.profile.name, assignment.user.profile %>
+                <% end %>
+              </div>
+            <% end %>
           </div>
-        <% end %>
-      </div>
-    <% end %>
+        </div>
+      <% end %>
     </div>
+    
   </div>
 <%  end %>
 <hr />
@@ -85,7 +96,7 @@
 <h2>Created by: <%= link_to @seed.user.profile.name,@seed.user.profile %></h2>
 <hr />
 <p>
-<%= link_to 'Edit', edit_seed_path(@seed) %> |
-<%= link_to 'Back', seeds_path %>
+  <%= link_to 'Edit', edit_seed_path(@seed) %> |
+  <%= link_to 'Back', seeds_path %>
 </p>
 
