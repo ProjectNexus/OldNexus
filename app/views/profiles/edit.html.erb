@@ -1,6 +1,66 @@
 <h1>Editing profile</h1>
 
-<%= render 'form' %>
+<style type="text/css">
+  form
+  {
+    display:inline;
+  }
+</style>
+<script type="text/javascript">
+  jQuery(function($){
+    $('#add_tag_link').click(function(){
+      $('#add_tag').load('<%= new_tag_path(:tag_link => {:taggable_id => @profile.id,:taggable_type => "Profile",:tag_type => "tag"}) %>', function(){
+        $('#add_tag_link').hide();
+        $('#tag_name').focus();
+        $('#new_tag').bind('ajax:success', function(evt, data, status, xhr) {
+          $('#add_tag').html("");
+          /*$('#add_tag').html(data.msg);*/
+          console.log(data.msg);
+          $('#add_tag_link').before(data.tag + ", ");
+          $('#add_tag_link').show();
+        });
+      });
+    });
+  });
+  jQuery(function($){
+    $('.Destroy').click(function(){
+      $(this).parent(). html('');
+    });
+  });
+</script>
 
-<%= link_to 'Show', @profile %> |
-<%= link_to 'Back', profiles_path %>
+<%= form_for(@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<p><b>Tags</b>:
+  <% if !@profile.tag_links.empty? %>
+    <% @profile.tag_links.each do |tag_link| %>
+      <span><%= link_to tag_link.tag.name, tag_link.tag %>(<%= link_to "X",tag_link, :method => :delete,:remote => true,:class=>"Destroy" %>),</span>
+    <% end end %>
+      <button id="add_tag_link">Add Tag</button>
+  <span id="add_tag"></span>
+</p>
+
+<%= link_to 'Back', @profile %>
