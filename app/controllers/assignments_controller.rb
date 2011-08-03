@@ -15,10 +15,7 @@ class AssignmentsController < ApplicationController
   def show
     @assignment = Assignment.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @assignment }
-    end
+    render :layout => false
   end
 
   # GET /assignments/new
@@ -28,10 +25,7 @@ class AssignmentsController < ApplicationController
 
     @goal = Goal.find(params[:goal_id])
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @assignment }
-    end
+    render :layout => false
   end
 
   # GET /assignments/1/edit
@@ -44,14 +38,10 @@ class AssignmentsController < ApplicationController
   def create
     @assignment = Assignment.new(params[:assignment])
 
-    respond_to do |format|
-      if @assignment.save
-        format.html { redirect_to(@assignment, :notice => 'Assignment was successfully created.') }
-        format.xml  { render :xml => @assignment, :status => :created, :location => @assignment }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @assignment.errors, :status => :unprocessable_entity }
-      end
+    if @assignment.save
+      render :json => {:id => @assignment.id, :msg =>"Successfully added assignment",:result=>"<li>#{@assignment.user.email} - #{@assignment.task}"}
+    else
+      render :json => {:msg =>"Assignment was unsuccessful",:result=>""}
     end
   end
 

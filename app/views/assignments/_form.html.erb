@@ -1,28 +1,8 @@
-<%= form_for(@assignment) do |f| %>
-  <% if @assignment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
-
-      <ul>
-      <% @assignment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :goal_id, :value => @goal.id %>
-  </div>
-  <div class="field">
-    <%= f.label :task %><br />
-    <%= f.text_area :task %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= form_for @assignment, :'data-type' => 'json', :remote => true do |f| %>
+  <h3><%= f.label :user_id %></h3>
+  <%= f.text_field :user_id %>
+  <%= f.hidden_field :goal_id, :value => @goal.id %>
+  <h3><%= f.label :task %></h3>
+  <%= f.text_area :task %>
+  <%= f.submit %>
 <% end %>

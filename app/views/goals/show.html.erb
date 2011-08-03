@@ -1,30 +1,42 @@
+<script type="text/javascript">
+jQuery(function($){
+    $('#add_assignment').click(function(){
+      $('#new_assignment_target').load('<%= new_assignment_path(:goal_id => @goal.id) %>', function(){
+        $('#add_assignment').hide();
+        $('#new_assignment').bind('ajax:success', function(evt, data, status, xhr) {
+          $('#new_assignment_target').html("");
+          console.log(data.msg);
+          $('#assignments_list').append("<li></li>");
+          $('#assignments_list li:last').load("/assignments/"+data.id);
+          $('#add_assignment').show();
+        });
+      });
+    });
+  });
+</script>
+
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @goal.name %>
-</p>
+<h1><%= @goal.name %></h1>
 
-<p>
-  <b>Description:</b>
-  <%= @goal.description %>
-</p>
+<h3>Description</h3>
+<p><%= @goal.description %></p>
 
-<p>
-  <b>Timeline:</b>
-  <%= @goal.timeline %>
-</p>
+<h3>Timeline:</h3>
+<p><%= @goal.timeline %></p>
 
-<p>Assignments:</p>
+<h3>Assignments:</h3>
 <% if !@goal.assignments.empty? %>
-<ul>
+<ul id="assignments_list">
   <% @goal.assignments.each do |assignment| %>
-  <li><%= assignment.user.email %> - <%= assignment.task %></li>
+  <li><%= link_to assignment.user.profile.name, assignment.user.profile %> - <%= assignment.task %></li>
   <% end %>
 </ul>
 <% end %>
-<%= link_to 'Add Assignment', new_assignment_path(:goal_id => @goal.id) %>
-<p>Resources</p>
+<button id="add_assignment">Add Assignment</button>
+<div id="new_assignment_target"></div>
+<h3>Resources</h3>
 <% if !@goal.resource_stocks.empty? %>
 <ul>
   <% @goal.resource_stocks.each do |stock| %>

@@ -11,31 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
+<h3><%= f.label :name %></h3>
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :problem %><br />
+<h3><%= f.label :problem %></h3>
     <%= f.text_area :problem %>
-  </div>
-  <div class="field">
-    <%= f.label :vision %><br />
+<h3><%= f.label :vision %></h3>
     <%= f.text_area :vision %>
-  </div>
-  <div class="field">
-    <%= f.label :scope %><br />
+<h3><%= f.label :scope %></h3>
     <%= f.text_area :scope %>
-  </div>
-  <div class="field">
-    <%= f.label :visibility %><br />
-    <%= f.text_field :visibility %>
-  </div>
-  <div class="field">
-    <%= f.label :category %>
+    <%#= f.label :visibility %>
+    <%#= f.text_field :visibility %>
+<h3><%= f.label :category %></h3>
     <%= f.collection_select :category_id, @categories, :id, :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<hr/>
+ <%= f.submit %>
 <% end %>

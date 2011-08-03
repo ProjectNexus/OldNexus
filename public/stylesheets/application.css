@@ -161,6 +161,10 @@ h3
   text-decoration:none;
   margin-right:5px;
 }
+#basics .admin-box
+{
+  top:-20px;
+}
 .edit
 {
   background-color:#6f6;
@@ -196,4 +200,11 @@ h3
   margin-top:0px;
   margin-bottom:0px;
   margin-left:20px;
+}
+
+textarea
+{
+  font-family: "Lato",sans-serif;
+  width:1000px;
+  height:75px;
 }
