@@ -21,23 +21,15 @@
     });
   });
 </script>
+<h1><%= @profile.name %></h1>
+<hr />
 
+<h3>Email: <%= @profile.user.email %></h3>
+
+<h3>Location: <%= @profile.location %></h3>
+<hr />
+<h3>Tags</h3>
 <p>
-  <b>Email:</b>
-  <%= @profile.user.email %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @profile.name %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @profile.location %>
-</p>
-
-<p><b>Tags</b>:
   <% if !@profile.tag_links.empty? %>
     <% @profile.tag_links.each do |tag_link| %>
       <%= link_to tag_link.tag.name, tag_link.tag %>, 
