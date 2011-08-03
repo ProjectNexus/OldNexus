@@ -12,6 +12,9 @@ jQuery(function($){
         });
       });
     });
+    $('.Destroy').click(function(){
+      $(this).parent().hide();
+    });
   });
 </script>
 
@@ -30,7 +33,7 @@ jQuery(function($){
 <% if !@goal.assignments.empty? %>
 <ul id="assignments_list">
   <% @goal.assignments.each do |assignment| %>
-  <li><%= link_to assignment.user.profile.name, assignment.user.profile %> - <%= assignment.task %></li>
+  <li><%= link_to assignment.user.profile.name, assignment.user.profile %> - <%= assignment.task %> (<%= link_to "X",assignment,:remote => true, :method => :delete,:class=>"Destroy" %>) </li>
   <% end %>
 </ul>
 <% end %>
@@ -53,4 +56,4 @@ jQuery(function($){
 
 
 <%= link_to 'Edit', edit_polymorphic_path([@goalable,@goal]) %> |
-<%= link_to 'Back', goals_path %>
+<%= link_to 'Back', @goalable %>

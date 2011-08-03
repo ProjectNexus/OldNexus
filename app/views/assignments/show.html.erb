@@ -1,1 +1,1 @@
-<%= link_to @assignment.user.profile.name, @assignment.user.profile %> - <%= @assignment.task %>
+<%= link_to @assignment.user.profile.name, @assignment.user.profile %> - <%= @assignment.task %> (<%= link_to "X",@assignment,:remote => true, :method => :delete,:class=>"Destroy" %>) 

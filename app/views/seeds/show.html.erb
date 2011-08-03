@@ -70,7 +70,7 @@
               <div class="goal-attr">
                 <b>Assigned to:</b>
                 <% goal.assignments.each do |assignment| %>
-                  <%= link_to assignment.user.profile.name, assignment.user.profile %>
+                  <%= link_to assignment.user.profile.name, assignment.user.profile %>, 
                 <% end %>
               </div>
             <% end %>
